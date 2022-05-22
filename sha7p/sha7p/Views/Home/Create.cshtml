@@ -1,0 +1,37 @@
+﻿@model City;
+
+<!DOCTYPE html>
+<html>
+	<h4>City</h4>
+	<div class="edit-block">
+		@using (Html.BeginForm("Create", "Home" ))
+		{
+			<div class ="dataBox">
+				<label>Страна</label><br />
+				@Html.DropDownListFor(m => m.CountryId, ViewBag.Cntr as SelectList)
+			</div>
+			<div class="dataBox">
+				<label>Город</label><br />
+				@Html.TextBoxFor(m => m.Name, "Город", new { @class = "text-box" })
+			</div>
+			<div class="dataBox">
+				<label>Дата основания</label><br />
+				@Html.TextBoxFor(m => m.FoundingDate, "1703", new { type = "number", @class = "text-box" })
+			</div>
+			<div class="dataBox">
+				<label>Население, тыс</label><br />
+				@Html.TextBoxFor(m => m.Population, "1000", new { type = "number", @class = "text-box" })
+			</div>
+			<div class="dataBox">
+				<label>Площадь, км</label><br />
+				@Html.TextBoxFor(m => m.Square, "100", new { type = "number", @class = "text-box" })
+			</div>
+			<div class="dataBox">
+				<input type="submit" value="Сохранить" />
+			</div>
+		}
+	</div>
+	 <div>
+		<a asp-action="Index">Back to List</a>
+	 </div>
+ </html>

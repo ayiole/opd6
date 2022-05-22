@@ -1,0 +1,30 @@
+﻿@model Country;
+
+<!DOCTYPE html>
+<html>
+	<h4></h4>
+	<div class="country-edit-block">
+		@using (Html.BeginForm("EditCountry", "Home" ))
+		{
+			<div class ="dataBox">
+				<label>Название страны</label><br />
+				@Html.TextBoxFor(m => m.Name,  new { @class = "text-box" })
+			</div>
+			<div class="dataBox">
+				<label>Население, тыс</label><br />
+				@Html.TextBoxFor(m => m.Population,  new { type = "number", @class = "text-box" })
+			</div>
+			<div class="dataBox">
+				<label>Площадь, км</label><br />
+				@Html.TextBoxFor(m => m.Square, new { type = "number", @class = "text-box" })
+			</div>
+			<div class="dataBox">
+				<input type="submit" value="Сохранить" />
+			</div>
+			
+		}
+	</div>
+	 <div>
+		<a asp-action="Index">Back to List</a>
+	 </div>
+ </html>

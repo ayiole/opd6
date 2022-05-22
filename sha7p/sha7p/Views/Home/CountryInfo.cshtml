@@ -1,0 +1,32 @@
+﻿@model Country;
+
+<!DOCTYPE html>
+<html>
+<style>
+	td{padding: 0 10px 0 0;text-align:center }
+</style>
+	<h4>@Model.Name</h4>
+	<div class="country-info-block">
+		<table>
+			<tr>
+				<td>Население, тыс</td>
+				<td>Площадь, км</td>
+				<td>Города</td>
+			</tr>
+			<tr>
+				<td>@Model.Population</td>
+				<td>@Model.Square</td>
+				<td>
+					@foreach (var item in ViewData["Cities"] as IQueryable<City>)
+					{
+						@(item.Name) <br />
+					}
+				</td>
+			</tr>
+		</table>
+	</div>
+	@Html.ActionLink("Редактировать информацию о стране", "EditCountry", Model)
+	 <div>
+		<a asp-action="Index">Back to List</a>
+	 </div>
+ </html>

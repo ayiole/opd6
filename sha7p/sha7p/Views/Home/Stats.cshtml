@@ -1,0 +1,32 @@
+﻿@model Country;
+
+<!DOCTYPE html>
+<html>
+<style>
+	td{padding: 0 10px 0 0;text-align:center }
+</style>
+	<div class="country-stats-block">
+		<table>
+			<tr>
+				<td>Страны</td>
+				<td>Количество городов</td>
+				<td>Средняя площадь города</td>
+				<td>Суммарное количество жителей</td>
+			</tr>
+			@{int i = 0;}
+			@foreach (var item in ViewData["Countries"] as IQueryable<Country>)
+			{		
+				<tr>
+					<td>@item.Name</td>
+					<td>@((@ViewData["CountsCities"] as List<int>)[i])</td>
+					<td>@((@ViewData["AvgSquare"]  as List<int>)[i])</td>
+					<td>@((@ViewData["SumPopulation"]  as List<int>)[i])</td>
+				</tr>
+				i++;
+			}
+		</table>
+	</div>
+	 <div>
+		<a asp-action="Index">Back to List</a>
+	 </div>
+ </html>

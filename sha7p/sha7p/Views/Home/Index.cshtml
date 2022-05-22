@@ -1,0 +1,41 @@
+﻿@model IEnumerable<City>;
+@{
+ Layout = null;
+}
+<!DOCTYPE html>
+<html>
+<style>
+	td{padding: 0 10px 0 0;text-align:center }
+</style>
+	<div class="text-center" style="background-color: deepskyblue" >
+		<h2>@ViewData["Title"]</h2>
+		<div class="city-list">
+			<table>
+				<tr>
+					<td>Id</td>
+					<td>Страна</td>
+					<td>Город</td>
+					<td>Дата основания</td>
+					<td>Население, тыс</td>
+					<td>Площадь, км</td>
+				</tr>
+				@foreach (var item in Model)
+				{
+					<tr>
+						<td>@item.Id</td>
+						<td>@item.Country.Name</td>
+						<td>@item.Name</td>
+						<td>@item.FoundingDate</td>
+						<td>@item.Population</td>
+						<td>@item.Square</td>
+						<td>@Html.ActionLink("Изменить", "EditCity", item)
+							@Html.ActionLink("Удалить", "Delete", item)
+							@Html.ActionLink("Информация о стране", "CountryInfo", item)</td>
+					</tr>
+				}
+			</table>
+			@Html.ActionLink("Добавить новый город", "Create")
+			@Html.ActionLink("Показать статистику", "Stats")
+		</div>
+	</div>
+</html>
